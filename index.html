@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <title>PM SHRI Kendriya Vidyalaya Bolarum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1e3c72 0%, #667eea 50%, #764ba2 100%);
+            --dark-gradient: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b4e 100%);
+            --accent-gold: #FFD700;
+            --accent-light-gold: #DAA520;
+            --accent-color: #667eea;
+            --accent-color-dark: #764ba2;
+            --primary-color: #1e3c72;
+            --chat-header-color: maroon;
+            --chat-header-dark: #8b2635;
+            --dark-card: #1a2332;
+            --dark-card-hover: #232d42;
+            --dark-border: #2a3f5f;
+            --dark-text: #e8eef5;
+            --dark-text-muted: #a0aec0;
+        }
+
+        body.theme-green {
+            --primary-gradient: linear-gradient(135deg, #0d5c3a 0%, #1abc9c 50%, #16a085 100%);
+            --dark-gradient: linear-gradient(135deg, #0a0e27 0%, #082a21 50%, #0a251a 100%);
+            --accent-color: #1abc9c;
+            --accent-color-dark: #16a085;
+            --primary-color: #0d5c3a;
+            --chat-header-color: #0d5c3a;
+            --chat-header-dark: #0a4a2e;
+        }
+
+        body.theme-red {
+            --primary-gradient: linear-gradient(135deg, #7d2b1f 0%, #e74c3c 50%, #c0392b 100%);
+            --dark-gradient: linear-gradient(135deg, #0a0e27 0%, #4a2518 50%, #2a0f08 100%);
+            --accent-color: #e74c3c;
+            --accent-color-dark: #c0392b;
+            --primary-color: #7d2b1f;
+            --chat-header-color: #7d2b1f;
+            --chat-header-dark: #5a1f16;
+        }
+
+        body.theme-purple {
+            --primary-gradient: linear-gradient(135deg, #5b2c6f 0%, #c239b3 50%, #e911b8 100%);
+            --dark-gradient: linear-gradient(135deg, #0a0e27 0%, #3d1e52 50%, #2a0f3a 100%);
+            --accent-color: #c239b3;
+            --accent-color-dark: #e911b8;
+            --primary-color: #5b2c6f;
+            --chat-header-color: #5b2c6f;
+            --chat-header-dark: #3d1e52;
+        }
+
+        body.theme-navy {
+            --primary-gradient: linear-gradient(135deg, #001a4d 0%, #003d99 50%, #0052cc 100%);
+            --dark-gradient: linear-gradient(135deg, #0a0e27 0%, #001a3a 50%, #000f26 100%);
+            --accent-color: #003d99;
+            --accent-color-dark: #0052cc;
+            --primary-color: #001a4d;
+            --chat-header-color: #001a4d;
+            --chat-header-dark: #000f33;
+        }
+
+        body.theme-orange {
+            --primary-gradient: linear-gradient(135deg, #b8520b 0%, #ff9500 50%, #ffb347 100%);
+            --dark-gradient: linear-gradient(135deg, #0a0e27 0%, #5a3a0a 50%, #3d2408 100%);
+            --accent-color: #ff9500;
+            --accent-color-dark: #ffb347;
+            --primary-color: #b8520b;
+            --chat-header-color: #b8520b;
+            --chat-header-dark: #8a3e08;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-gradient);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body.dark-mode {
+            background: var(--dark-gradient);
+            color: var(--dark-text);
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 5px solid;
+            border-image: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%) 1;
+        }
+
+        body.dark-mode header {
+            background: #1a2332;
+            color: var(--dark-text);
+            box-shadow: 0 4px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .logo-section:hover {
+            opacity: 0.9;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+            border: 3px solid white;
+            object-fit: cover;
+        }
+
+        body.dark-mode .logo-img {
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+            border-color: var(--accent-color);
+        }
+
+        .logo-text h1 {
+            font-size: 1.2em;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+        }
+
+        body.dark-mode .logo-text h1 {
+            color: var(--dark-text);
+        }
+
+        .logo-text p {
+            font-size: 0.7em;
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        nav {
+            display: none;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .menu-toggle span {
+            background: var(--accent-color);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(10px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-10px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 99;
+            padding-top: 80px;
+            flex-direction: column;
+            gap: 10px;
+            padding: 80px 20px 20px 20px;
+        }
+
+        body.dark-mode .mobile-menu {
+            background: #1a2332;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            background: linear-gradient(135deg, #f0f4f8 0%, #f5f0ff 100%);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .mobile-menu a {
+            background: #232d42;
+            color: var(--dark-text);
+        }
+
+        .mobile-menu a:active {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            color: white;
+            border-left-color: white;
+        }
+
+        .settings-btn {
+            background: none;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .settings-btn:active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        body.dark-mode .settings-btn {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* ========== SETTINGS PANEL ========== */
+        .settings-panel {
+            position: fixed;
+            right: -320px;
+            top: 0;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: -4px 0 25px rgba(0, 0, 0, 0.2);
+            z-index: 200;
+            padding: 40px 20px;
+            transition: right 0.4s ease;
+            overflow-y: auto;
+        }
+
+        body.dark-mode .settings-panel {
+            background: #1a2332;
+            color: var(--dark-text);
+            box-shadow: -4px 0 25px rgba(0, 0, 0, 0.5);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .settings-panel.active {
+            right: 0;
+        }
+
+        .settings-panel h3 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 1.3em;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 15px;
+        }
+
+        body.dark-mode .settings-panel h3 {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .settings-item {
+            margin: 25px 0;
+        }
+
+        .settings-item label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode .settings-item label {
+            color: var(--dark-text);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #ccc;
+            border-radius: 24px;
+            margin-right: 15px;
+            transition: all 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        body.dark-mode .toggle-switch {
+            background: #2a3f5f;
+        }
+
+        .toggle-switch.active {
+            background: var(--accent-color);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: left 0.4s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active .toggle-slider {
+            left: 28px;
+        }
+
+        .close-settings {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .close-settings:active {
+            color: var(--accent-color);
+        }
+
+        body.dark-mode .close-settings {
+            color: var(--accent-color);
+        }
+
+        /* Theme Selector */
+        .themes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .theme-option {
+            width: 100%;
+            height: 50px;
+            border: 3px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .theme-option {
+            border-color: #2a3f5f;
+        }
+
+        .theme-option:active {
+            transform: scale(1.08);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-option.active {
+            border-color: white;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.8), inset 0 0 0 2px rgba(255, 255, 255, 0.3);
+            transform: scale(1.12);
+        }
+
+        .theme-blue {
+            background: linear-gradient(135deg, #1e3c72 0%, #667eea 100%);
+        }
+
+        .theme-green {
+            background: linear-gradient(135deg, #0d5c3a 0%, #1abc9c 100%);
+        }
+
+        .theme-red {
+            background: linear-gradient(135deg, #7d2b1f 0%, #e74c3c 100%);
+        }
+
+        .theme-purple {
+            background: linear-gradient(135deg, #5b2c6f 0%, #c239b3 100%);
+        }
+
+        .theme-navy {
+            background: linear-gradient(135deg, #001a4d 0%, #003d99 100%);
+        }
+
+        .theme-orange {
+            background: linear-gradient(135deg, #b8520b 0%, #ff9500 100%);
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .content-section {
+            display: none;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+            border-top: 5px solid;
+            border-image: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%) 1;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .content-section {
+            background: linear-gradient(135deg, #1a2332 0%, #232d42 100%);
+            color: var(--dark-text);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            border-top-color: var(--accent-color);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-section h1 {
+            font-size: 1.8em;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            border-bottom: 4px solid;
+            border-image: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-dark) 100%) 1;
+            padding-bottom: 15px;
+        }
+
+        body.dark-mode .content-section h1 {
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-bottom-color: var(--accent-color);
+        }
+
+        .content-section h2 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin: 20px 0 15px 0;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        body.dark-mode .content-section h2 {
+            color: var(--accent-color);
+        }
+
+        .content-section h2:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            border-radius: 2px;
+        }
+
+        .content-section h3 {
+            font-size: 1.1em;
+            color: var(--primary-color);
+            margin: 15px 0 10px 0;
+        }
+
+        body.dark-mode .content-section h3 {
+            color: var(--accent-color);
+        }
+
+        .content-section p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        body.dark-mode .content-section p {
+            color: var(--dark-text-muted);
+        }
+
+        /* ========== STATS ========== */
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .stat-box {
+            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .stat-box .number {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin: 10px 0;
+            color: var(--accent-gold);
+        }
+
+        .stat-box .label {
+            font-size: 0.9em;
+        }
+
+        /* ========== FEATURE GRID ========== */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #f0f4f8 0%, #f5f0ff 100%);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid;
+            border-image: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-dark) 100%) 1;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .feature-item {
+            background: linear-gradient(135deg, #232d42 0%, #2a3a52 100%);
+            border-top-color: var(--accent-color);
+            box-shadow: 0 3px 15px rgba(102, 126, 234, 0.15);
+        }
+
+        .feature-item:active {
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.35);
+        }
+
+        .feature-item .icon {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+
+        .feature-item h4 {
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 8px 0;
+            font-size: 0.9em;
+        }
+
+        body.dark-mode .feature-item h4 {
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 0.85em;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        body.dark-mode .feature-item p {
+            color: var(--dark-text-muted);
+        }
+
+        /* ========== HIGHLIGHT BOX ========== */
+        .highlight {
+            background: linear-gradient(135deg, #fffdf0 0%, #f5f0ff 100%);
+            border-left: 5px solid;
+            border-image: linear-gradient(180deg, var(--accent-color) 0%, var(--accent-color-dark) 100%) 1;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        body.dark-mode .highlight {
+            background: linear-gradient(135deg, #232d42 0%, #2a3a52 100%);
+            border-left-color: var(--accent-color);
+        }
+
+        .highlight h4 {
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+
+        body.dark-mode .highlight h4 {
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .highlight ul {
+            margin-left: 18px;
+        }
+
+        .highlight li {
+            margin: 6px 0;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        body.dark-mode .highlight li {
+            color: var(--dark-text-muted);
+        }
+
+        /* ========== ACHIEVEMENT CARDS ========== */
+        .achievement {
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0f4f8 100%);
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+            border-left: 5px solid;
+            border-image: linear-gradient(180deg, var(--accent-color) 0%, var(--accent-color-dark) 100%) 1;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .achievement {
+            background: linear-gradient(135deg, #232d42 0%, #2a3a52 100%);
+            border-left-color: var(--accent-color);
+            box-shadow: 0 3px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .achievement strong {
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95em;
+        }
+
+        body.dark-mode .achievement strong {
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .achievement p {
+            color: #555;
+            margin: 3px 0;
+            font-size: 0.9em;
+        }
+
+        body.dark-mode .achievement p {
+            color: var(--dark-text-muted);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 20px 15px;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+
+        body.dark-mode footer {
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+        }
+
+        footer p {
+            margin: 8px 0;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            color: var(--accent-gold);
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        /* ========== CHAT WIDGET ========== */
+        #chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 999;
+            font-size: 1.8em;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            touch-action: manipulation;
+        }
+
+        #chat-icon:active {
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        body.dark-mode #chat-icon {
+            box-shadow: 0 4px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        #chat-box {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 15px;
+            width: calc(100% - 30px);
+            max-width: 340px;
+            height: 380px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.25);
+            overflow: hidden;
+            z-index: 998;
+            flex-direction: column;
+        }
+
+        body.dark-mode #chat-box {
+            background-color: #1a2332;
+            box-shadow: 0 5px 35px rgba(102, 126, 234, 0.35);
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            color: #fff;
+            padding: 12px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            border-bottom: 4px solid var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        body.dark-mode .chat-header {
+            border-bottom-color: var(--accent-color);
+        }
+
+        .chat-title {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .chat-name {
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            font-size: 0.95em;
+        }
+
+        .chat-status {
+            font-size: 11px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chat-status .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #34c759;
+        }
+
+        .chat-close {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            line-height: 1;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            flex-shrink: 0;
+            touch-action: manipulation;
+        }
+
+        .chat-close:active {
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 12px;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            display: none;
+        }
+
+        body.dark-mode .chat-messages {
+            background: #232d42;
+        }
+
+        .chat-input-area {
+            border-top: 1px solid #e0e0e0;
+            background: #fff;
+            flex-shrink: 0;
+            padding: 0;
+        }
+
+        body.dark-mode .chat-input-area {
+            border-top-color: #404040;
+            background: #1a2332;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 8px;
+            padding: 12px;
+            background: inherit;
+        }
+
+        .chat-input input {
+            flex: 1;
+            border: 1px solid #d1d1d1;
+            background: #ffffff;
+            padding: 10px 12px;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+            color: #1f1f1f;
+            min-width: 0;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        body.dark-mode .chat-input input {
+            background: #232d42;
+            border-color: #555;
+            color: #e8eef5;
+        }
+
+        .chat-input input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .chat-input button {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            white-space: nowrap;
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .chat-input button:active {
+            opacity: 0.9;
+            transform: scale(0.98);
+        }
+
+        .message {
+            margin: 0;
+            padding: 10px 12px;
+            border-radius: 12px;
+            max-width: 85%;
+            line-height: 1.4;
+            word-wrap: break-word;
+            word-break: break-word;
+            white-space: pre-wrap;
+            font-size: 13px;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            border-radius: 12px 12px 4px 12px;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background: #f1f1f1;
+            color: #1f1f1f;
+            border-radius: 12px 12px 12px 4px;
+        }
+
+        body.dark-mode .bot-message {
+            background: #2a3a52;
+            color: #e8eef5;
+        }
+
+        .thinking span {
+            animation: none;
+            opacity: 0.6;
+        }
+
+        /* ========== TABLET & UP ========== */
+        @media (min-width: 768px) {
+            header {
+                padding: 15px 40px;
+            }
+
+            .header-container {
+                gap: 30px;
+            }
+
+            .logo-img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.5em;
+            }
+
+            .logo-text p {
+                font-size: 0.85em;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            nav {
+                display: flex !important;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 0 10px;
+                text-decoration: none;
+                color: var(--primary-color);
+                font-weight: 500;
+                transition: color 0.3s;
+                cursor: pointer;
+                position: relative;
+                font-size: 0.95em;
+            }
+
+            body.dark-mode nav a {
+                color: var(--dark-text);
+            }
+
+            nav a:hover {
+                background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .mobile-menu {
+                display: none !important;
+            }
+
+            main {
+                padding: 0 40px;
+                margin: 40px auto;
+            }
+
+            .content-section {
+                padding: 50px 40px;
+                margin-bottom: 0;
+            }
+
+            .content-section h1 {
+                font-size: 2.5em;
+            }
+
+            .content-section h2 {
+                font-size: 1.8em;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .stat-box {
+                padding: 30px;
+            }
+
+            .stat-box .number {
+                font-size: 3em;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .feature-item {
+                padding: 20px;
+            }
+
+            .feature-item .icon {
+                font-size: 2.5em;
+            }
+
+            #chat-box {
+                width: 340px;
+                right: 20px;
+                bottom: 100px;
+            }
+
+            footer {
+                padding: 30px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a onclick="showSection('home'); closeMobileMenu()">Home</a>
+        <a onclick="showSection('about'); closeMobileMenu()">About</a>
+        <a onclick="showSection('academics'); closeMobileMenu()">Academics</a>
+        <a onclick="showSection('sports'); closeMobileMenu()">Sports</a>
+        <a onclick="showSection('faculty'); closeMobileMenu()">Faculty</a>
+        <a onclick="showSection('innovation'); closeMobileMenu()">Innovation</a>
+        <a onclick="showSection('contact'); closeMobileMenu()">Contact</a>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <button class="close-settings" onclick="closeSettings()">✕</button>
+        <h3>⚙️ Settings</h3>
+
+        <div class="settings-item">
+            <label>🎨 Theme</label>
+        </div>
+        
+        <div class="themes-grid">
+            <button class="theme-option theme-blue active" onclick="setTheme('default')" title="Blue Theme"></button>
+            <button class="theme-option theme-green" onclick="setTheme('green')" title="Green Theme"></button>
+            <button class="theme-option theme-red" onclick="setTheme('red')" title="Red Theme"></button>
+            <button class="theme-option theme-purple" onclick="setTheme('purple')" title="Purple Theme"></button>
+            <button class="theme-option theme-navy" onclick="setTheme('navy')" title="Navy Theme"></button>
+            <button class="theme-option theme-orange" onclick="setTheme('orange')" title="Orange Theme"></button>
+        </div>
+
+        <div class="settings-item">
+            <label onclick="toggleDarkMode()">
+                <div class="toggle-switch" id="darkModeToggle">
+                    <div class="toggle-slider"></div>
+                </div>
+                Dark Mode
+            </label>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-section" onclick="showSection('home'); return false;">
+                <img src="https://i.pinimg.com/originals/5a/4e/f9/5a4ef9b9d7806da10afb1e9b3efdb22d.png" alt="Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>KV Bolarum</h1>
+                    <p>PM SHRI School</p>
+                </div>
+            </a>
+            <nav id="nav">
+                <a onclick="showSection('home')">Home</a>
+                <a onclick="showSection('about')">About</a>
+                <a onclick="showSection('academics')">Academics</a>
+                <a onclick="showSection('sports')">Sports</a>
+                <a onclick="showSection('faculty')">Faculty</a>
+                <a onclick="showSection('innovation')">Innovation</a>
+                <a onclick="showSection('contact')">Contact</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="settings-btn" onclick="openSettings()">⚙️</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- HOME -->
+        <section id="home" class="content-section active">
+            <h1>🏆 PM SHRI Kendriya Vidyalaya Bolarum</h1>
+            <p style="font-size: 1.1em; background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--accent-color-dark) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600;">Sharing Knowledge, Inspiring Minds, Building the Future</p>
+
+            <p>Founded in 1980, PM SHRI Kendriya Vidyalaya Bolarum has been a beacon of educational excellence in Secunderabad for over four decades. Serving children of central government employees, we combine academic rigor with holistic development.</p>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="number">44+</div>
+                    <div class="label">Years of Excellence</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">100%</div>
+                    <div class="label">Pass Rate (2024-25)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">2.5</div>
+                    <div class="label">Acres Campus</div>
+                </div>
+            </div>
+
+            <h2>Our Vision & Mission</h2>
+            <div class="highlight">
+                <h4>Vision</h4>
+                <p>To develop globally competitive yet rooted citizens equipped with 21st-century skills, national consciousness, and commitment to social responsibility.</p>
+            </div>
+            <div class="highlight">
+                <h4>Mission</h4>
+                <p>Provide world-class education fostering all-round development in academics, sports, culture, and character building.</p>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="content-section">
+            <h1>📖 About KV Bolarum</h1>
+            <h2>Our Journey</h2>
+            <p>Founded in 1980 under the leadership of Col. G.S. Kapoor and Mr. Jones Deva Prasad, KV Bolarum started humbly at Cavalry Barracks near Nag Mandir with classes I-V. Over four decades, we have evolved into one of the most reputed educational institutions in Secunderabad.</p>
+            
+            <h2>Infrastructure & Facilities</h2>
+            <p>Our 2.5-acre campus at Allenby Lines, Jai Jawahar Nagar provides world-class facilities supporting academic excellence and holistic development including modern laboratories, library, sports ground, and auditorium.</p>
+            
+            <h2>Notable Alumni</h2>
+            <div class="achievement">
+                <strong>🚀 GVK Raman - Chandrayaan-3 Mission</strong>
+                <p>Significant contributor to India's historic lunar mission, showcasing the caliber of our alumni.</p>
+            </div>
+        </section>
+
+        <!-- ACADEMICS -->
+        <section id="academics" class="content-section">
+            <h1>📚 Academic Excellence</h1>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="number">100%</div>
+                    <div class="label">Pass Rate</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">5+</div>
+                    <div class="label">Consecutive Excellence</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">A+</div>
+                    <div class="label">NCERT Aligned</div>
+                </div>
+            </div>
+
+            <h2>Curriculum & Programs</h2>
+            <p>We offer comprehensive education aligned with NCERT standards covering:</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="icon">📖</div>
+                    <h4>Language Excellence</h4>
+                    <p>Hindi, English, Sanskrit with emphasis on communication skills</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🔬</div>
+                    <h4>Science & Math</h4>
+                    <p>Advanced labs, practical learning, problem-solving approach</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🌍</div>
+                    <h4>Social Studies</h4>
+                    <p>Civic awareness, historical knowledge, geography expertise</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">💻</div>
+                    <h4>Computer Science</h4>
+                    <p>Coding, digital literacy, technology skills for future</p>
+                </div>
+            </div>
+
+            <h2>Special Initiatives</h2>
+            <div class="highlight">
+                <h4>Enhanced Learning Programs</h4>
+                <ul>
+                    <li>Advanced Mathematics and Science Clubs</li>
+                    <li>Debate and Public Speaking Workshops</li>
+                    <li>Research Projects and Innovation Labs</li>
+                    <li>Regular Assessments and Feedback System</li>
+                    <li>Remedial Classes for Struggling Learners</li>
+                </ul>
+            </div>
+
+            <h2>Assessment & Evaluation</h2>
+            <p>Multi-dimensional evaluation includes periodic tests, unit assessments, practical examinations, and continuous evaluation ensuring holistic development of students with regular parent-teacher interactions.</p>
+        </section>
+
+        <!-- SPORTS -->
+        <section id="sports" class="content-section">
+            <h1>⚽ Sports & Athletics</h1>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="number">20+</div>
+                    <div class="label">Sports Activities</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">50+</div>
+                    <div class="label">Annual Competitions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">500+</div>
+                    <div class="label">Active Players</div>
+                </div>
+            </div>
+
+            <h2>Sports Programs</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="icon">🏀</div>
+                    <h4>Basketball</h4>
+                    <p>Inter-school matches, state-level tournaments</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">⚾</div>
+                    <h4>Cricket</h4>
+                    <p>Dedicated pitch, inter-school matches</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">⚽</div>
+                    <h4>Football</h4>
+                    <p>Team building, competitive leagues</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🤾</div>
+                    <h4>Handball</h4>
+                    <p>Professional training, district tournaments</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🏃</div>
+                    <h4>Kho-Kho</h4>
+                    <p>Traditional sport, inter-school championships</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🎾</div>
+                    <h4>Table Tennis</h4>
+                    <p>Table tennis courts, state-level players</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">♟️</div>
+                    <h4>Chess</h4>
+                    <p>Chess club, regional tournaments</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🎯</div>
+                    <h4>Carom</h4>
+                    <p>Inter-school competitions, skill development</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🏃</div>
+                    <h4>Athletics</h4>
+                    <p>Track and field events, marathon training</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🏐</div>
+                    <h4>Volleyball</h4>
+                    <p>Team building, competitive tournaments</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🤸</div>
+                    <h4>Gymnastics</h4>
+                    <p>Flexibility training, strength building</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🏊</div>
+                    <h4>Swimming</h4>
+                    <p>Water safety, competitive swimming</p>
+                </div>
+            </div>
+
+            <h2>Infrastructure & Facilities</h2>
+            <div class="highlight">
+                <h4>World-Class Sports Complex</h4>
+                <ul>
+                    <li>Full-sized basketball and volleyball courts</li>
+                    <li>Cricket ground with professional pitch</li>
+                    <li>Football field and handball courts</li>
+                    <li>Table tennis and carom facilities</li>
+                    <li>Chess room and indoor sports area</li>
+                    <li>Running track and field area</li>
+                    <li>Gymnasium with modern fitness equipment</li>
+                    <li>Swimming pool facilities</li>
+                </ul>
+            </div>
+
+            <h2>Achievements & Recognition</h2>
+            <p>Our athletes have won numerous medals at district, state, and national levels. Students participate actively in Khelo India, National School Games, and Inter-School Championships regularly.</p>
+        </section>
+
+        <!-- FACULTY -->
+        <section id="faculty" class="content-section">
+            <h1>👨‍🏫 Faculty Excellence</h1>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="number">80+</div>
+                    <div class="label">Experienced Faculty</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">95%</div>
+                    <div class="label">PG Qualified</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">40+</div>
+                    <div class="label">Avg Experience</div>
+                </div>
+            </div>
+
+            <h2>Faculty Profile</h2>
+            <p>Our faculty comprises highly qualified educators with extensive experience in their respective fields. Each teacher undergoes regular professional development and participates in national and international seminars.</p>
+
+            <h2>Teaching Approach</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="icon">🎯</div>
+                    <h4>Student-Centric</h4>
+                    <p>Focus on individual learning pace and capabilities</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🔍</div>
+                    <h4>Research-Based</h4>
+                    <p>Evidence-based teaching methods and practices</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">💡</div>
+                    <h4>Interactive Learning</h4>
+                    <p>Engagement through projects, discussions, and activities</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">📱</div>
+                    <h4>Technology Enabled</h4>
+                    <p>Smart classrooms, digital resources, online support</p>
+                </div>
+            </div>
+
+            <h2>Mentoring & Counseling</h2>
+            <div class="highlight">
+                <h4>Holistic Support System</h4>
+                <ul>
+                    <li>Dedicated mentors for each class</li>
+                    <li>Career counseling and guidance</li>
+                    <li>Psychological support and counseling services</li>
+                    <li>Regular parent-teacher conferences</li>
+                    <li>Academic progress tracking</li>
+                    <li>Personality development programs</li>
+                </ul>
+            </div>
+
+            <h2>Professional Development</h2>
+            <p>Faculty participate in regular training workshops, subject-specific seminars, and skill development programs organized by state and national educational bodies to stay updated with latest pedagogical practices.</p>
+        </section>
+
+        <!-- INNOVATION -->
+        <section id="innovation" class="content-section">
+            <h1>💡 Innovation & Skill Development</h1>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="number">20+</div>
+                    <div class="label">Innovation Clubs</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">AI &</div>
+                    <div class="label">ML Ready</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">100%</div>
+                    <div class="label">Digital</div>
+                </div>
+            </div>
+
+            <h2>Digital & AI Initiative</h2>
+            <p>We are at the forefront of technological education, implementing AI and ML concepts in curriculum while maintaining strong foundational learning.</p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="icon">🤖</div>
+                    <h4>AI Chatbot (KENVI)</h4>
+                    <p>School website integrated with intelligent chatbot for student support</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🔐</div>
+                    <h4>Cybersecurity</h4>
+                    <p>Awareness programs and training on digital safety and security</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">💻</div>
+                    <h4>Coding Programs</h4>
+                    <p>Python, JavaScript, C++ for students of all levels</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🌐</div>
+                    <h4>Web Development</h4>
+                    <p>Full-stack development courses and projects</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">📊</div>
+                    <h4>Data Analytics</h4>
+                    <p>Statistical analysis and data visualization skills</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🎮</div>
+                    <h4>Game Development</h4>
+                    <p>Unity, Unreal Engine workshops and competitions</p>
+                </div>
+            </div>
+
+            <h2>Smart Campus Initiative</h2>
+            <div class="highlight">
+                <h4>Technology-Enabled Facilities</h4>
+                <ul>
+                    <li>Smart classrooms with interactive displays</li>
+                    <li>Digital library with online resources</li>
+                    <li>Virtual laboratory for science experiments</li>
+                    <li>Learning Management System (LMS)</li>
+                    <li>Real-time attendance and progress tracking</li>
+                    <li>Mobile app for parents and students</li>
+                </ul>
+            </div>
+
+            <h2>Entrepreneurship & Skill Development</h2>
+            <p>We conduct workshops on entrepreneurship, financial literacy, and vocational skills. Students participate in startup incubation programs and innovation challenges to develop problem-solving abilities and entrepreneurial mindset.</p>
+
+            <h2>Teacher Training on AI & Technology</h2>
+            <p>We organize regular training sessions for faculty on AI integration, online teaching methods, cybersecurity awareness, and best practices in digital education to ensure quality teaching with technology.</p>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="content-section">
+            <h1>📞 Contact & Location</h1>
+            <div class="highlight">
+                <h4>📍 School Address</h4>
+                <p>Allenby Lines, Jai Jawahar Nagar Post, Yapral<br>
+                Secunderabad – 500087, Telangana, India</p>
+            </div>
+            <div class="highlight">
+                <h4>📞 Contact Information</h4>
+                <p><strong>Phone:</strong> +91-40-29803596<br>
+                <strong>Email:</strong> kvbolarum087@gmail.com<br>
+                <strong>Office Hours:</strong> 9:00 AM - 5:00 PM (Monday to Friday)</p>
+            </div>
+            <div class="highlight">
+                <h4>🕐 School Timings</h4>
+                <p><strong>All Sections (I-XII):</strong> 8:30 AM - 2:40 PM<br>
+                <strong>Saturday:</strong> Closed<br>
+                <strong>Sunday:</strong> Closed</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2025 PM SHRI Kendriya Vidyalaya Bolarum.</p>
+        <p class="footer-quote">"Sharing Knowledge, Inspiring Minds, Building the Future"</p>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-icon">💬</div>
+
+    <div id="chat-box">
+        <div class="chat-header">
+            <div class="chat-title">
+                <span class="chat-name">KENVI AI</span>
+                <span class="chat-status"><span class="dot"></span>Online</span>
+            </div>
+            <button class="chat-close" id="chat-close" aria-label="Close">×</button>
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+
+        <div class="chat-input-area">
+            <div class="chat-input">
+                <input id="user-input" type="text" placeholder="Ask something...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== MOBILE MENU ==========
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.getElementById('menuToggle');
+            menu.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const toggle = document.getElementById('menuToggle');
+            menu.classList.remove('active');
+            toggle.classList.remove('active');
+        }
+
+        // ========== THEME MANAGEMENT ==========
+        function setTheme(theme) {
+            document.body.className = '';
+            if (theme === 'green') document.body.classList.add('theme-green');
+            else if (theme === 'red') document.body.classList.add('theme-red');
+            else if (theme === 'purple') document.body.classList.add('theme-purple');
+            else if (theme === 'navy') document.body.classList.add('theme-navy');
+            else if (theme === 'orange') document.body.classList.add('theme-orange');
+            
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+
+            document.querySelectorAll('.theme-option').forEach(btn => btn.classList.remove('active'));
+            event.target?.classList.add('active');
+            
+            localStorage.setItem('selectedTheme', theme);
+        }
+
+        // ========== SECTION NAVIGATION ==========
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+
+            window.scrollTo(0, 0);
+            closeSettings();
+        }
+
+        // ========== SETTINGS PANEL ==========
+        function openSettings() {
+            document.getElementById('settingsPanel').classList.add('active');
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsPanel').classList.remove('active');
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const toggle = document.getElementById('darkModeToggle');
+            toggle.classList.toggle('active');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Load saved preferences
+        window.addEventListener('load', function() {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+            setTheme(savedTheme);
+
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeToggle').classList.add('active');
+            }
+
+            const themeMap = {
+                'default': 0,
+                'green': 1,
+                'red': 2,
+                'purple': 3,
+                'navy': 4,
+                'orange': 5
+            };
+            const buttons = document.querySelectorAll('.theme-option');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (buttons[themeMap[savedTheme]]) {
+                buttons[themeMap[savedTheme]].classList.add('active');
+            }
+        });
+
+        // Close settings when clicking outside
+        document.addEventListener('click', function(event) {
+            const panel = document.getElementById('settingsPanel');
+            const settingsBtn = document.querySelector('.settings-btn');
+            if (panel && settingsBtn && !panel.contains(event.target) && !settingsBtn.contains(event.target)) {
+                closeSettings();
+            }
+        });
+
+        // ========== CHAT WIDGET ==========
+        const chatIcon = document.getElementById("chat-icon");
+        const chatBox = document.getElementById("chat-box");
+        const chatMessages = document.getElementById("chat-messages");
+        const userInput = document.getElementById("user-input");
+        const sendBtn = document.getElementById("send-btn");
+        const chatClose = document.getElementById("chat-close");
+
+        chatIcon.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isHidden = window.getComputedStyle(chatBox).display === "none";
+            chatBox.style.display = isHidden ? "flex" : "none";
+            if (isHidden && chatMessages.childElementCount === 0) showWelcome();
+        });
+
+        chatClose.addEventListener("click", (e) => {
+            e.stopPropagation();
+            chatBox.style.display = "none";
+        });
+
+        // Close chatbox when clicking outside
+        document.addEventListener("click", function(event) {
+            const chatBoxDisplay = window.getComputedStyle(chatBox).display;
+            if (chatBoxDisplay !== "none") {
+                if (!chatBox.contains(event.target) && !chatIcon.contains(event.target)) {
+                    chatBox.style.display = "none";
+                }
+            }
+        });
+
+        function appendMessage(text, className) {
+            const msg = document.createElement("div");
+            msg.className = "message " + className;
+            msg.textContent = text;
+            chatMessages.appendChild(msg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return msg;
+        }
+
+        function showWelcome() {
+            appendMessage("Hello! How can I help you today?", "bot-message");
+        }
+
+        function showThinking() {
+            const thinkDiv = document.createElement("div");
+            thinkDiv.className = "message bot-message thinking";
+            thinkDiv.innerHTML = "<span></span><span></span><span></span>";
+            chatMessages.appendChild(thinkDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return thinkDiv;
+        }
+
+        sendBtn.addEventListener("click", sendMessage);
+        userInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+        });
+
+        function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+            appendMessage(text, "user-message");
+            userInput.value = "";
+
+            const thinking = showThinking();
+
+            fetch("http://192.168.1.9:5000/api/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question: text })
+            })
+            .then(res => res.json())
+            .then(data => {
+                thinking.remove();
+                appendMessage(data.answer || "I couldn't process that.", "bot-message");
+            })
+            .catch(err => {
+                thinking.remove();
+                appendMessage("Sorry, couldn't reach server.", "bot-message");
+            });
+        }
+    </script>
+</body>
+</html>
